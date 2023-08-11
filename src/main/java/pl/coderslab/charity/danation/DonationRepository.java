@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 
 @Repository
@@ -40,6 +41,12 @@ public class DonationRepository {
     public BigDecimal quantityOfBags(){
         Query query = entityManager.createNativeQuery("SELECT sum(quantity) from donation");
         List<BigDecimal> integers = query.getResultList();
+        return integers.get(0);
+    }
+
+    public BigInteger quantityOfDonations(){
+        Query query = entityManager.createNativeQuery("SELECT count(id) from donation");
+        List<BigInteger> integers = query.getResultList();
         return integers.get(0);
     }
 }

@@ -1,10 +1,12 @@
 package pl.coderslab.charity.danation;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import pl.coderslab.charity.category.Category;
 import pl.coderslab.charity.institution.Institution;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -20,8 +22,9 @@ public class Donation {
     private List<Category> category;
     private String street;
     private String city;
-    private java.sql.Date pickUpDate;
-    private java.sql.Date pickUpTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate pickUpDate;
+    private LocalDate pickUpTime;
     private String pickUpComment;
     public Long getId() {
         return id;
@@ -71,19 +74,19 @@ public class Donation {
         this.city = city;
     }
 
-    public Date getPickUpDate() {
+    public LocalDate getPickUpDate() {
         return pickUpDate;
     }
 
-    public void setPickUpDate(Date pickUpDate) {
+    public void setPickUpDate(LocalDate pickUpDate) {
         this.pickUpDate = pickUpDate;
     }
 
-    public Date getPickUpTime() {
+    public LocalDate getPickUpTime() {
         return pickUpTime;
     }
 
-    public void setPickUpTime(Date pickUpTime) {
+    public void setPickUpTime(LocalDate pickUpTime) {
         this.pickUpTime = pickUpTime;
     }
 
