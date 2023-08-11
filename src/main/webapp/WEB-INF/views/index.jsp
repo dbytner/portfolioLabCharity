@@ -4,7 +4,7 @@
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
-            <em>13</em>
+            <em>${bags}</em>
 
             <h3>Oddanych worków</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
@@ -73,8 +73,8 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
+        <c:forEach var="institution" items="${institutions}" varStatus="status">
             <li>
-            <c:forEach var="institution" items="${institutions}" varStatus="status">
                 <c:if test="${status.index % 2 == 0}">
                 <div class="col">
                     <div class="title">${institution.name}</div>
@@ -87,9 +87,8 @@
                     <div class="subtitle">${institution.description}</div>
                 </div>
                 </c:if>
-                </c:forEach>
             </li>
-
+        </c:forEach>
 <%--            <li>--%>
 <%--                <div class="col">--%>
 <%--                    <div class="title">Fundacja “Dla dzieci"</div>--%>
