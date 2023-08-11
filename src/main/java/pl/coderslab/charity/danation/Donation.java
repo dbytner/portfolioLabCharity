@@ -16,7 +16,7 @@ public class Donation {
     private int quantity;
     @ManyToOne
     private Institution institution;
-    @OneToMany
+    @ManyToMany
     private List<Category> category;
     private String street;
     private String city;
