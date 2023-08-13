@@ -35,9 +35,9 @@ public class CategoryRepository {
     public List<Category> findAllCategories(){
         return entityManager.createQuery("SELECT c FROM Category c").getResultList();
     }
-//    public List<Category> findCustomerOrders(long customerId){
-//        Query query = entityManager.createQuery("select o from Orders o where o.customer =: customerId");
-//        query.setParameter("customerId", customerId);
-//        return (List<Orders>) query;
-//    }
+
+    public List<String> categoryNames(){
+        return entityManager.createQuery("SELECT c.name FROM Category c").getResultList();
+    }
+
 }
