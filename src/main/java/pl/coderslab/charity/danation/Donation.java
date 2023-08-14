@@ -7,6 +7,7 @@ import pl.coderslab.charity.institution.Institution;
 import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -22,9 +23,13 @@ public class Donation {
     private List<Category> category;
     private String street;
     private String city;
+
+    private String zipCode;
+    private Integer phone;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
-    private LocalDate pickUpTime;
+
+    private LocalTime pickUpTime;
     private String pickUpComment;
     public Long getId() {
         return id;
@@ -82,11 +87,11 @@ public class Donation {
         this.pickUpDate = pickUpDate;
     }
 
-    public LocalDate getPickUpTime() {
+    public LocalTime getPickUpTime() {
         return pickUpTime;
     }
 
-    public void setPickUpTime(LocalDate pickUpTime) {
+    public void setPickUpTime(LocalTime pickUpTime) {
         this.pickUpTime = pickUpTime;
     }
 
@@ -96,5 +101,21 @@ public class Donation {
 
     public void setPickUpComment(String pickUpComment) {
         this.pickUpComment = pickUpComment;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public Integer getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Integer phone) {
+        this.phone = phone;
     }
 }

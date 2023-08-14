@@ -1260,22 +1260,22 @@ header nav ul li:last-of-type {
 
 /* line 33, scss/modules/homepage-sections/_steps.scss */
 .steps--item .icon--hands {
-  background-image: url("../images/icon-hands.png");
+  background-image: url("../imagesn-hands.png");
 }
 
 /* line 33, scss/modules/homepage-sections/_steps.scss */
 .steps--item .icon--arrow {
-  background-image: url("../images/icon-arrow.png");
+  background-image: url("../imagesn-arrow.png");
 }
 
 /* line 33, scss/modules/homepage-sections/_steps.scss */
 .steps--item .icon--glasses {
-  background-image: url("../images/icon-glasses.png");
+  background-image: url("../imagesn-glasses.png");
 }
 
 /* line 33, scss/modules/homepage-sections/_steps.scss */
 .steps--item .icon--courier {
-  background-image: url("../images/icon-courier.png");
+  background-image: url("../imagesn-courier.png");
 }
 
 /* line 39, scss/modules/homepage-sections/_steps.scss */
