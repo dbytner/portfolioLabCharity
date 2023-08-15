@@ -86,14 +86,15 @@
   <div class="form--steps-container">
     <div class="form--steps-counter">Krok <span>1</span>/4</div>
 
-    <form action="form-confirmation.jsp" method="post">
+    <form method="post" action="/add">
+      <form:form modelAttribute="donations">
       <!-- STEP 1: class .active is switching steps -->
       <div data-step="1" class="active">
         <h3>Zaznacz co chcesz oddać:</h3>
 <%--        <div class="form-group form-group--checkbox">--%>
 
             <span class="checkbox"></span>
-            <form:checkboxes path="categories" items="${categories}"></form:checkboxes>
+            <form:checkboxes path="categories" items="${categories}" itemLabel="name" itemValue="id"></form:checkboxes>
 
 <%--        </div>--%>
 
@@ -104,7 +105,7 @@
 
       <!-- STEP 2 -->
       <div data-step="2">
-        <form:form modelAttribute="donations">
+
         <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
 
 <%--        <div class="form-group form-group--inline">--%>
@@ -126,21 +127,7 @@
       <!-- STEP 4 -->
       <div data-step="3">
         <h3>Wybierz organizacje, której chcesz pomóc:</h3>
-          <form:select path="institution" items="${institutions}" itemLabel="name" itemValue="id"/>
-<%--        <div class="form-group form-group--checkbox">--%>
-<%--          <label>--%>
-<%--            <input type="radio" name="organization" value="old" />--%>
-<%--            <span class="checkbox radio"></span>--%>
-<%--            <span class="description">--%>
-<%--                  <div class="title">Fundacja “Bez domu”</div>--%>
-<%--                  <div class="subtitle">--%>
-<%--                    Cel i misja: Pomoc dla osób nie posiadających miejsca--%>
-<%--                    zamieszkania--%>
-<%--                  </div>--%>
-<%--                </span>--%>
-<%--          </label>--%>
-<%--        </div>--%>
-
+          <form:select itemLabel="name" itemValue="id" path="institution.id" items="${institutions}" />
         <div class="form-group form-group--buttons">
           <button type="button" class="btn prev-step">Wstecz</button>
           <button type="button" class="btn next-step">Dalej</button>
@@ -159,18 +146,18 @@
             </div>
 
             <div class="form-group form-group--inline">
-<%--              <label> Miasto <form:input path="city" />--%>
+              <label> Miasto <form:input path="city" />
             </div>
 
             <div class="form-group form-group--inline">
               <label>
-<%--                Kod pocztowy <form:input path="zipCode" />--%>
+                Kod pocztowy <form:input path="zipCode" />
               </label>
             </div>
 
             <div class="form-group form-group--inline">
               <label>
-<%--                Numer telefonu <form:input path="phone" />--%>
+                Numer telefonu <form:input path="phone" />
               </label>
             </div>
           </div>
@@ -178,7 +165,7 @@
           <div class="form-section--column">
             <h4>Termin odbioru</h4>
             <div class="form-group form-group--inline">
-<%--              <label> Data <form:input type="date" path="pickUpDate"/>--%>
+              <label> Data <form:input type="date" path="pickUpDate"/>
             </div>
 
             <div class="form-group form-group--inline">
@@ -188,7 +175,7 @@
             <div class="form-group form-group--inline">
               <label>
                 Uwagi dla kuriera
-<%--                  <form:textarea path="pickUpComment"/>--%>
+                  <form:textarea path="pickUpComment"/>
               </label>
             </div>
           </div>
@@ -251,9 +238,9 @@
       </div>
     </form>
   </div>
-    </form:form>
-</section>
 
+</section>
+</form:form>
 <footer>
   <div class="contact">
     <h2>Skontaktuj się z nami</h2>

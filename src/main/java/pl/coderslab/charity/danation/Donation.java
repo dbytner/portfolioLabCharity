@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,7 +21,7 @@ public class Donation {
     @ManyToOne
     private Institution institution;
     @ManyToMany
-    private List<Category> category;
+    private List<Category> categories = new ArrayList<>();
     private String street;
     private String city;
 
@@ -55,12 +56,12 @@ public class Donation {
         this.institution = institution;
     }
 
-    public List<Category> getCategory() {
-        return category;
+    public List<Category> getCategories() {
+        return categories;
     }
 
-    public void setCategory(List<Category> category) {
-        this.category = category;
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 
     public String getStreet() {
@@ -118,4 +119,5 @@ public class Donation {
     public void setPhone(Integer phone) {
         this.phone = phone;
     }
+
 }

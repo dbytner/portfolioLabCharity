@@ -3,6 +3,7 @@ package pl.coderslab.charity.danation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.charity.category.CategoryRepository;
 import pl.coderslab.charity.institution.InstitutionRepository;
 
@@ -22,10 +23,16 @@ public class DonationController {
 
     @GetMapping("/donations")
     public String homeAction(Model model){
-        model.addAttribute("categories", categoryRepository.categoryNames());
+        model.addAttribute("categories", categoryRepository.findAllCategories());
         model.addAttribute("donations", new Donation());
         model.addAttribute("institutions", institutionRepository.findAllInstitutions());
         return "form";
+    }
+
+    @PostMapping("/add")
+    public String save(Donation donation) {
+        donationRepository.save(donation);
+        return "redirect:/donations";
     }
 
 

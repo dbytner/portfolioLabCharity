@@ -32,7 +32,7 @@ public class InstitutionRepository {
         entityManager.remove(entityManager.contains(institution) ? institution: entityManager.merge(institution));
     }
 
-    public List<Category> findAllInstitutions(){
+    public List<Institution> findAllInstitutions(){
         return entityManager.createQuery("SELECT i FROM Institution i").getResultList();
     }
 }
