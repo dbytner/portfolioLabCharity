@@ -94,7 +94,7 @@
 <%--        <div class="form-group form-group--checkbox">--%>
 
             <span class="checkbox"></span>
-            <form:checkboxes path="categories" items="${categories}" itemLabel="name" itemValue="id"></form:checkboxes>
+            <form:checkboxes path="categories" items="${categories}" itemLabel="name" itemValue="id"/>
 
 <%--        </div>--%>
 

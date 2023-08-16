@@ -21,6 +21,8 @@ public class Donation {
     @ManyToOne
     private Institution institution;
     @ManyToMany
+    @JoinTable(name = "donation_category", joinColumns = @JoinColumn(name = "donation_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories = new ArrayList<>();
     private String street;
     private String city;
