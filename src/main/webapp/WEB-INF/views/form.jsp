@@ -93,7 +93,7 @@
         <h3>Zaznacz co chcesz oddać:</h3>
 
         <div class="form-group form-group--checkbox">
-          <c:forEach var="category" items="${categories}" varStatus="status">
+          <c:forEach var="category" items="${categories}">
           <label>
                 <input
                         type="checkbox"
@@ -136,10 +136,11 @@
       <div data-step="3">
         <h3>Wybierz organizacje, której chcesz pomóc:</h3>
 <%--          <form:select itemLabel="name" itemValue="id" path="institution.id" items="${institutions}" />--%>
-        <c:forEach var="institution" items="${institutions}" varStatus="status">
+
         <div class="form-group form-group--checkbox">
+          <c:forEach var="institution" items="${institutions}">
           <label>
-            <input type="radio" name="organization" value=${institution.id} />
+            <input type="radio" name="institutions" value=${institution.id} />
             <span class="checkbox radio"></span>
             <span class="description">
                   <div class="title">${institution.name}</div>
@@ -148,8 +149,9 @@
                   </div>
                 </span>
           </label>
+          </c:forEach>
         </div>
-        </c:forEach>
+
         <div class="form-group form-group--buttons">
           <button type="button" class="btn prev-step">Wstecz</button>
           <button type="button" class="btn next-step">Dalej</button>

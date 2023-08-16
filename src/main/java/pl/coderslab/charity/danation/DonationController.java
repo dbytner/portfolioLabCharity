@@ -32,7 +32,7 @@ public class DonationController {
     @PostMapping("/add")
     public String save(Donation donation) {
         donationRepository.save(donation);
-        return "redirect:/donations";
+        return "form-confirmation";
     }
 
 
