@@ -91,29 +91,37 @@
       <!-- STEP 1: class .active is switching steps -->
       <div data-step="1" class="active">
         <h3>Zaznacz co chcesz oddać:</h3>
-<%--        <div class="form-group form-group--checkbox">--%>
 
-            <span class="checkbox"></span>
-            <form:checkboxes path="categories" items="${categories}" itemLabel="name" itemValue="id"/>
-
-<%--        </div>--%>
-
-        <div class="form-group form-group--buttons">
-          <button type="button" class="btn next-step">Dalej</button>
+        <div class="form-group form-group--checkbox">
+          <c:forEach var="category" items="${categories}" varStatus="status">
+          <label>
+                <input
+                        type="checkbox"
+                        name="categories"
+                        value=${category.id}
+                />
+                <span class="checkbox"></span>
+                <span class="description"
+                >${category.name}</span
+                >
+          </label>
+            </c:forEach>
         </div>
-      </div>
+                      <div class="form-group form-group--buttons">
+                        <button type="button" class="btn next-step">Dalej</button>
+                      </div>
+                    </div>
 
-      <!-- STEP 2 -->
+                    <!-- STEP 2 -->
       <div data-step="2">
 
-        <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
-
-<%--        <div class="form-group form-group--inline">--%>
-<%--          <label>--%>
+      <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
+         <div class="form-group form-group--inline">
+          <label>
             Liczba 60l worków:
             <form:input path="quantity"/>
-<%--          </label>--%>
-<%--        </div>--%>
+          </label>
+        </div>
 
         <div class="form-group form-group--buttons">
           <button type="button" class="btn prev-step">Wstecz</button>
@@ -127,7 +135,21 @@
       <!-- STEP 4 -->
       <div data-step="3">
         <h3>Wybierz organizacje, której chcesz pomóc:</h3>
-          <form:select itemLabel="name" itemValue="id" path="institution.id" items="${institutions}" />
+<%--          <form:select itemLabel="name" itemValue="id" path="institution.id" items="${institutions}" />--%>
+        <c:forEach var="institution" items="${institutions}" varStatus="status">
+        <div class="form-group form-group--checkbox">
+          <label>
+            <input type="radio" name="organization" value=${institution.id} />
+            <span class="checkbox radio"></span>
+            <span class="description">
+                  <div class="title">${institution.name}</div>
+                  <div class="subtitle">
+                    ${institution.description}
+                  </div>
+                </span>
+          </label>
+        </div>
+        </c:forEach>
         <div class="form-group form-group--buttons">
           <button type="button" class="btn prev-step">Wstecz</button>
           <button type="button" class="btn next-step">Dalej</button>
