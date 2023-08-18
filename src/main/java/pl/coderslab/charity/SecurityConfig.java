@@ -31,8 +31,8 @@ public class SecurityConfig {
     @Bean
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin/**").hasAnyRole("USER","ADMIN")
-                .antMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers("/donations/**").hasAnyRole("USER","ADMIN")
+                .antMatchers("/donations/**").hasAnyAuthority("ROLE_ADMIN")
                 .and().formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/");
