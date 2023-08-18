@@ -31,7 +31,7 @@
 
 <section class="login-page">
     <h2>Zaloguj się</h2>
-    <form method="post" action="/donations">
+    <form method="post">
         <div class="form-group">
             <input type="email" name="email" placeholder="Email" />
         </div>

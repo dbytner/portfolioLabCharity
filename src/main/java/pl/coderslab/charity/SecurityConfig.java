@@ -15,14 +15,14 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
-        UserDetails user = User.withDefaultPasswordEncoder()
-                .username("user@user.pl")
-                .password("password")
+        UserDetails user = User
+                .withUsername("user@user.pl")
+                .password("$2a$12$mRJUNZaKkl6LGJGGrPjkI.6rb.27aliQmVGsoHcZQ41VIpWJHrA9.")
                 .roles("USER")
                 .build();
-        UserDetails admin = User.withDefaultPasswordEncoder()
-                .username("admin")
-                .password("password")
+        UserDetails admin = User
+                .withUsername("admin")
+                .password("$2a$12$mRJUNZaKkl6LGJGGrPjkI.6rb.27aliQmVGsoHcZQ41VIpWJHrA9.")
                 .roles("USER", "ADMIN")
                 .build();
         return new InMemoryUserDetailsManager(user, admin);
@@ -30,11 +30,10 @@ public class SecurityConfig {
 
     @Bean
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.csrf().disable().authorizeRequests()
                 .antMatchers("/donations/**").hasAnyRole("USER","ADMIN")
-                .antMatchers("/donations/**").hasAnyAuthority("ROLE_ADMIN")
                 .and().formLogin()
-                .loginPage("/login")
+                .loginPage("/login").usernameParameter("email")
                 .defaultSuccessUrl("/");
         return http.build();
     }
