@@ -73,8 +73,9 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
-            <c:forEach var="institution" items="${institutions}" varStatus="status">
+
                 <li>
+                <c:forEach var="institution" items="${institutions}" varStatus="status">
                     <c:if test="${status.index % 2 == 0}">
                         <div class="col">
                             <div class="title">${institution.name}</div>
@@ -87,19 +88,9 @@
                             <div class="subtitle">${institution.description}</div>
                         </div>
                     </c:if>
+                </c:forEach>
                 </li>
-            </c:forEach>
-            <%--            <li>--%>
-            <%--                <div class="col">--%>
-            <%--                    <div class="title">Fundacja “Dla dzieci"</div>--%>
-            <%--                    <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>--%>
-            <%--                </div>--%>
-            <%--                <div class="col">--%>
-            <%--                    <div class="title">Fundacja “Bez domu”</div>--%>
-            <%--                    <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>--%>
-            <%--                </div>--%>
 
-            <%--            </li>--%>
         </ul>
     </div>
 

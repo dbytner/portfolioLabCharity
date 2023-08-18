@@ -32,6 +32,7 @@ public class SecurityConfig {
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/donations/**").hasAnyRole("USER","ADMIN")
+                .antMatchers("/", "/register").permitAll()
                 .and().formLogin()
                 .loginPage("/login").usernameParameter("email")
                 .defaultSuccessUrl("/");

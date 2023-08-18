@@ -91,9 +91,9 @@
       <!-- STEP 1: class .active is switching steps -->
       <div data-step="1" class="active">
         <h3>Zaznacz co chcesz oddać:</h3>
-
+        <c:forEach var="category" items="${categories}">
         <div class="form-group form-group--checkbox">
-          <c:forEach var="category" items="${categories}">
+
           <label>
                 <input
                         type="checkbox"
@@ -105,8 +105,9 @@
                 >${category.name}</span
                 >
           </label>
-            </c:forEach>
+
         </div>
+        </c:forEach>
                       <div class="form-group form-group--buttons">
                         <button type="button" class="btn next-step">Dalej</button>
                       </div>
@@ -140,7 +141,7 @@
         <div class="form-group form-group--checkbox">
           <c:forEach var="institution" items="${institutions}">
           <label>
-            <input type="radio" name="institutions" value=${institution.id} />
+            <input type="radio" name="institution" value=${institution.id} />
             <span class="checkbox radio"></span>
             <span class="description">
                   <div class="title">${institution.name}</div>
