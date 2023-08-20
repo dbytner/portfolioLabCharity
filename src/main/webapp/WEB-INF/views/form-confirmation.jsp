@@ -20,7 +20,8 @@
         <ul class="dropdown">
           <li><a href="#">Profil</a></li>
           <li><a href="#">Moje zbiórki</a></li>
-          <li><a href="#">Wyloguj</a></li>
+          <li><a href="/donations">Przekaż dar</a></li>
+          <li><a href="/logout">Wyloguj</a></li>
         </ul>
       </li>
     </ul>

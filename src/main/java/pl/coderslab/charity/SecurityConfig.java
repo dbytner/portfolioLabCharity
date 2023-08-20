@@ -18,11 +18,12 @@ public class SecurityConfig {
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/donations/**").hasAnyRole("USER","ADMIN")
-                .antMatchers("/admin").hasRole("Admin")
+                .antMatchers("/admin").hasRole("ADMIN")
                 .antMatchers("/", "/register").permitAll()
                 .and().formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/donation");
+                .defaultSuccessUrl("/donation")
+                .and().logout().logoutSuccessUrl("/");
         return http.build();
     }
 
