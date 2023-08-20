@@ -16,8 +16,9 @@
 <header class="header--main-page">
   <nav class="container container--70">
     <ul class="nav--actions">
-      <li><a href="" class="btn btn--small btn--without-border">Zaloguj</a></li>
-      <li><a href="#" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+      <li><a href="/donations" class="btn btn--small btn--without-border">Przekaż dar</a></li>
+      <li><a href="/login" class="btn btn--small btn--without-border">Zaloguj</a></li>
+      <li><a href="/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
     </ul>
 
     <ul>
