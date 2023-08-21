@@ -73,23 +73,24 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
+            <c:forEach var="institution" items="${institutions}" varStatus="number">
 
-                <li>
-                <c:forEach var="institution" items="${institutions}" varStatus="status">
-                    <c:if test="${status.index % 2 == 0}">
-                        <div class="col">
-                            <div class="title">${institution.name}</div>
-                            <div class="subtitle">${institution.description}</div>
-                        </div>
-                    </c:if>
-                    <c:if test="${status.index % 2 != 0}">
-                        <div class="col">
-                            <div class="title">${institution.name}</div>
-                            <div class="subtitle">${institution.description}</div>
-                        </div>
-                    </c:if>
-                </c:forEach>
-                </li>
+                <c:if test="${number.count %2 !=0}">
+                    <li>
+                    <div class="col">
+                        <div class="title">Fundacja "${institution.name}"</div>
+                        <div class="subtitle">Cel i misja: ${institution.description}</div>
+                    </div>
+                </c:if>
+                <c:if test="${number.count %2 == 0}">
+                    <div class="col">
+                        <div class="title">Fundacja "${institution.name}"</div>
+                        <div class="subtitle">Cel i misja: ${institution.description}</div>
+                    </div>
+                    </li>
+                </c:if>
+
+            </c:forEach>
 
         </ul>
     </div>

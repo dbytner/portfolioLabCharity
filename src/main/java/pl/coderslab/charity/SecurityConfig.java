@@ -21,8 +21,7 @@ public class SecurityConfig {
                 .antMatchers("/admin").hasRole("ADMIN")
                 .antMatchers("/", "/register").permitAll()
                 .and().formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/donations")
+                .loginPage("/login").successHandler(new CustomAuthenticationSuccessHandler())
                 .and().logout().logoutSuccessUrl("/");
         return http.build();
     }

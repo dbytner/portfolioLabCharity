@@ -1,9 +1,6 @@
 package pl.coderslab.charity.user;
 
-import org.springframework.security.core.GrantedAuthority;
-
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Set;
 
 @Entity
@@ -21,10 +18,6 @@ public class User {
 
     public User() {
     }
-
-    public User(String username, String password, Collection<? extends GrantedAuthority> authorities) {
-    }
-
     public Long getId() {
         return id;
     }
