@@ -22,7 +22,7 @@ public class SecurityConfig {
                 .antMatchers("/", "/register").permitAll()
                 .and().formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/donation")
+                .defaultSuccessUrl("/donations")
                 .and().logout().logoutSuccessUrl("/");
         return http.build();
     }
