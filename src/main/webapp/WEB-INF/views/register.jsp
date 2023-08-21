@@ -1,9 +1,10 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="header.jsp"%>
 
 <section class="login-page">
     <h2>Załóż konto</h2>
-    <form method="post" action="/addUser">
+    <form:form method="post" action="/addUser" modelAttribute="user">
         <div class="form-group">
             <input type="email" name="username" placeholder="Email" />
         </div>
@@ -18,7 +19,7 @@
             <a href="/login" class="btn btn--without-border">Zaloguj się</a>
             <button class="btn" type="submit">Załóż konto</button>
         </div>
-    </form>
+    </form:form>
 </section>
 
 <%@ include file="footer.jsp"%>

@@ -1,5 +1,7 @@
 package pl.coderslab.charity.user;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -10,7 +12,9 @@ public class User {
     @Column(name = "id", nullable = false)
     private Long id;
     @Column(nullable = false, unique = true, length = 60)
+    @NotBlank(message = "Pole nie może być puste")
     private String username;
+    @NotBlank(message = "Pole nie może być puste")
     private String password;
     private int enabled;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
