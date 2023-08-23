@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.charity.institution.Institution;
 import pl.coderslab.charity.institution.InstitutionRepository;
@@ -20,25 +21,31 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String homeAction(){
-        return "admin";
+        return "admin/admin";
     }
 
     @GetMapping("/admin/institutionList")
     public String list(Model model){
         model.addAttribute("institutions", institutionRepository.findAllInstitutions());
-        return "list";
+        return "admin/list";
     }
 
     @GetMapping("/admin/institution/add")
     public String add(Model model){
         model.addAttribute("institutions", new Institution());
-        return "institutionAdd";
+        return "admin/institutionAdd";
+    }
+    @GetMapping("/admin/institution/edit/{id}")
+    public String institutionEdit(@PathVariable long id, Model model){
+        Institution institution = institutionRepository.find(id);
+        model.addAttribute("institution", institution);
+        return "admin/institutionEdit";
     }
 
     @PostMapping("/admin/institution/add")
     public String save(@Valid Institution institution, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()){
-            return "institutionAdd";
+            return "admin/institutionAdd";
         }
         institutionRepository.save(institution);
         return "redirect:/admin/institutionList";
