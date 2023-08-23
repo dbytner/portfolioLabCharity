@@ -23,6 +23,7 @@
   </ul>
   <ul>
     <a href="/admin" style="float: left" class="btn btn--without-border active">Panel Administratora</a>
+    <a href="/admin/institutionList" style="float: left" class="btn btn--without-border active">Lista fundacji</a>
     <li><a href="/" class="btn btn--without-border active">Start</a></li>
   </ul>
 </nav>

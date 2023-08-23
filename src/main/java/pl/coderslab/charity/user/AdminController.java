@@ -38,9 +38,11 @@ public class AdminController {
     @GetMapping("/admin/institution/edit/{id}")
     public String institutionEdit(@PathVariable long id, Model model){
         Institution institution = institutionRepository.find(id);
-        model.addAttribute("institution", institution);
+        model.addAttribute("institutions", institution);
         return "admin/institutionEdit";
     }
+
+    @GetMapping("/admin/institution/delete/{id}")
 
     @PostMapping("/admin/institution/add")
     public String save(@Valid Institution institution, BindingResult bindingResult, Model model) {
@@ -48,6 +50,15 @@ public class AdminController {
             return "admin/institutionAdd";
         }
         institutionRepository.save(institution);
+        return "redirect:/admin/institutionList";
+    }
+
+    @PostMapping("/admin/institution/edit")
+    public String edit(@Valid Institution institution, BindingResult bindingResult, Model model) {
+        if(bindingResult.hasErrors()){
+            return "admin/institutionAdd";
+        }
+        institutionRepository.update(institution);
         return "redirect:/admin/institutionList";
     }
 }
