@@ -17,7 +17,7 @@
 </header>
 
 <h2>Edytuj instytucję</h2>
-<form:form method="post" action="/admin/institution/edit" modelAttribute="institutions">
+<form:form method="post" action="/admin/institution/delete-confirm" modelAttribute="institutions">
     <form:hidden path="id"/>
 <div class="form-group form-group--inline">
     <label>

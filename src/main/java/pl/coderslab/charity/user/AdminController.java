@@ -10,6 +10,7 @@ import pl.coderslab.charity.institution.Institution;
 import pl.coderslab.charity.institution.InstitutionRepository;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class AdminController {
@@ -43,6 +44,17 @@ public class AdminController {
     }
 
     @GetMapping("/admin/institution/delete/{id}")
+    public String institutionDelete(@PathVariable long id, Model model){
+        Institution institution = institutionRepository.find(id);
+        model.addAttribute("institutions", institution);
+        return "admin/institutionDelete";
+    }
+    @GetMapping("/admin/delete-confirm/{id}")
+    public String delete(@PathVariable long id, Model model) {
+        Institution institution = institutionRepository.find(id);
+        institutionRepository.delete(institution);
+        return "redirect:/admin/institutionList";
+    }
 
     @PostMapping("/admin/institution/add")
     public String save(@Valid Institution institution, BindingResult bindingResult, Model model) {
