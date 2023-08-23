@@ -1,9 +1,8 @@
 package pl.coderslab.charity.user;
 
-import org.springframework.security.core.GrantedAuthority;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Set;
 
 @Entity
@@ -13,7 +12,9 @@ public class User {
     @Column(name = "id", nullable = false)
     private Long id;
     @Column(nullable = false, unique = true, length = 60)
+    @NotBlank(message = "Pole nie może być puste")
     private String username;
+    @NotBlank(message = "Pole nie może być puste")
     private String password;
     private int enabled;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -21,10 +22,6 @@ public class User {
 
     public User() {
     }
-
-    public User(String username, String password, Collection<? extends GrantedAuthority> authorities) {
-    }
-
     public Long getId() {
         return id;
     }

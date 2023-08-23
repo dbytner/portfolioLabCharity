@@ -1,6 +1,7 @@
 package pl.coderslab.charity.institution;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Institution {
@@ -8,7 +9,9 @@ public class Institution {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+    @NotBlank
     private String name;
+    @NotBlank
     private String description;
 
     public Long getId() {
