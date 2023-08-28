@@ -16,13 +16,13 @@
 </header>
 
 <section class="table-sub-heading-color">
-  <h2>Instytucje:</h2>
+  <h2>Adminstratorzy:</h2>
   <div class="table-tab">
     <table id="tableinstitutions" class="table" >
       <thead>
       <tr>
         <th>Nazwa</th>
-        <th>Opis</th>
+<%--        <th>Opis</th>--%>
         <th>Akcje</th>
       </tr>
       </thead>
@@ -31,10 +31,10 @@
         <tr>
           <td>${admin.username}</td>
           <td>
-            <a href="/admin/institution/edit/${admin.id}">
+            <a href="/admin/admin/edit/${admin.id}">
               <button type="button" class="btn btn--small">Edytuj</button>
             </a>
-            <a href="/admin/institution/delete/${admin.id}" class="delete-link">
+            <a href="/admin/admin/delete/${admin.id}" class="delete-link">
               <button type="button" class="btn btn--small">Usuń</button>
             </a>
           </td>
@@ -45,7 +45,7 @@
     <c:if test='${delete.equals("failed")}'>
       <p class="error"> Nie można usunąć instytucji</p>
     </c:if>
-    <a href="/admin/institution/add">
+    <a href="/admin/add">
       <button style="margin-right:30px;float:right" type="button" class="btn">Dodaj</button>
     </a>
   </div>

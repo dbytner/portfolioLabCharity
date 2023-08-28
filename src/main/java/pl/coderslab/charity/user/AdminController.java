@@ -1,5 +1,6 @@
 package pl.coderslab.charity.user;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,17 +11,21 @@ import pl.coderslab.charity.institution.Institution;
 import pl.coderslab.charity.institution.InstitutionRepository;
 
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.HashSet;
 
 @Controller
 public class AdminController {
     private final InstitutionRepository institutionRepository;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-    public AdminController(InstitutionRepository institutionRepository, UserRepository userRepository, RoleRepository roleRepository) {
+    public AdminController(InstitutionRepository institutionRepository, UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
         this.institutionRepository = institutionRepository;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/admin")
@@ -64,6 +69,11 @@ public class AdminController {
         return "admin/adminsList";
     }
 
+    @GetMapping("/admin/add")
+    public String adminAdd(Model model){
+        model.addAttribute("admin", new User());
+        return "admin/adminAdd";
+    }
     @PostMapping("/admin/institution/add")
     public String save(@Valid Institution institution, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()){
@@ -71,6 +81,18 @@ public class AdminController {
         }
         institutionRepository.save(institution);
         return "redirect:/admin/institutionList";
+    }
+    @PostMapping("/admin/add")
+    public String adminSave(@Valid User user, BindingResult bindingResult, Model model) {
+        if(bindingResult.hasErrors()){
+            return "admin/institutionAdd";
+        }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setEnabled(1);
+        Role userRole = roleRepository.findByName("ROLE_ADMIN");
+        user.setRoles(new HashSet<>(Arrays.asList(userRole)));
+        userRepository.save(user);
+        return "redirect:/admin/adminsList";
     }
 
     @PostMapping("/admin/institution/edit")
