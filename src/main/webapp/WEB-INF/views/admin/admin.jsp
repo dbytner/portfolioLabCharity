@@ -30,7 +30,7 @@
     <ul>
       <li><a href="/admin" class="btn btn--without-border active">Start</a></li>
       <li><a href="/admin/institutionList" class="btn btn--without-border">Lista fundacji</a></li>
-      <li><a href="#o_nas" class="btn btn--without-border">O nas</a></li>
+      <li><a href="/admin/adminsList" class="btn btn--without-border">Lista administratorów</a></li>
       <li><a href="#pomoc" class="btn btn--without-border">Fundacje i organizacje</a></li>
       <li><a href="#contact_form" class="btn btn--without-border">Kontakt</a></li>
     </ul>

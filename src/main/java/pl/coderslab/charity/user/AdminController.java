@@ -10,14 +10,17 @@ import pl.coderslab.charity.institution.Institution;
 import pl.coderslab.charity.institution.InstitutionRepository;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class AdminController {
     private final InstitutionRepository institutionRepository;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
 
-    public AdminController(InstitutionRepository institutionRepository) {
+    public AdminController(InstitutionRepository institutionRepository, UserRepository userRepository, RoleRepository roleRepository) {
         this.institutionRepository = institutionRepository;
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
     }
 
     @GetMapping("/admin")
@@ -54,6 +57,11 @@ public class AdminController {
         Institution institution = institutionRepository.find(id);
         institutionRepository.delete(institution);
         return "redirect:/admin/institutionList";
+    }
+    @GetMapping("/admin/adminsList")
+    public String adminList(Model model){
+        model.addAttribute("admins", userRepository.findAllUsersWithRole(roleRepository.findByName("ROLE_ADMIN")));
+        return "admin/adminsList";
     }
 
     @PostMapping("/admin/institution/add")
