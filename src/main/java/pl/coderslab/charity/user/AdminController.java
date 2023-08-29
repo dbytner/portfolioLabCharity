@@ -74,6 +74,11 @@ public class AdminController {
         model.addAttribute("admin", new User());
         return "admin/adminAdd";
     }
+    @GetMapping("/admin/add/{id}")
+    public String adminEdit(Model model){
+        model.addAttribute("admin", new User());
+        return "admin/adminEdit";
+    }
     @PostMapping("/admin/institution/add")
     public String save(@Valid Institution institution, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()){
@@ -102,5 +107,13 @@ public class AdminController {
         }
         institutionRepository.update(institution);
         return "redirect:/admin/institutionList";
+    }
+    @PostMapping("/admin/edit")
+    public String adminEdit(@Valid User user, BindingResult bindingResult, Model model) {
+        if(bindingResult.hasErrors()){
+            return "admin/institutionAdd";
+        }
+        userRepository.save(user);
+        return "redirect:/admin/adminsList";
     }
 }

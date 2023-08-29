@@ -17,18 +17,18 @@
 </header>
 
 <h2>Edytuj instytucję</h2>
-<form:form method="post" action="/admin/institution/edit" modelAttribute="institutions">
+<form:form method="post" action="/admin/edit" modelAttribute="admin">
     <form:hidden path="id"/>
 <div class="form-group form-group--inline">
     <label>
         Nazwa instytucji:
-        <form:input class="w-100 p-1" path="name"/>
+        <form:input class="w-100 p-1" path="username"/>
     </label>
 </div>
 <div class="form-group form-group--inline">
     <label>
         Opis instytucji:
-        <form:input class="w-100 p-1" path="description"/>
+        <form:input class="w-100 p-1" path="password"/>
     </label>
 </div>
 <button class="btn" type="submit">Zapisz</button>
